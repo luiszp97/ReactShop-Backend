@@ -6,7 +6,7 @@ const { generateJWT } = require('../helpers/jwt')
 
 const createUser = async ( req, res = response )=> {
 
-    const { email, password } = req.body;
+    const { email, password, rol } = req.body;
 
 
     try{
@@ -28,7 +28,7 @@ const createUser = async ( req, res = response )=> {
 
         const salt = bcrypt.genSaltSync( );
         usuario.password = bcrypt.hashSync( password, salt );
-        usuario.rol = 'user'
+        usuario.rol = rol
 
     //? Guardando el Usuario en base de datos
 

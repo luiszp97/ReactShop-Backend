@@ -19,7 +19,7 @@ const UserSchema = Schema({
     },
 
     rol : {
-        type: String,
+        type: 'user' | 'seller',
         require: false
     }
 
