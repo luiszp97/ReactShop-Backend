@@ -36,7 +36,7 @@ const createUser = async ( req, res = response )=> {
 
     //? Generar JWT
 
-        const token = await generateJWT( usuario.id, usuario.name );
+        const token = await generateJWT( usuario.id, usuario.name, usuario.rol );
 
         res.status(201).json({
             ok:true,
@@ -92,7 +92,7 @@ const userLogin = async (req, res = response)=> {
 
     //? Genarando el jsonWebToken
 
-        const token = await generateJWT( usuario.id, usuario.name );
+        const token = await generateJWT( usuario.id, usuario.name, usuario.rol );
 
     res.json({
         ok:true,
@@ -116,16 +116,17 @@ const userLogin = async (req, res = response)=> {
 
 const tokenRenew = async (req, res = response )=> {
 
-    const { uid, name } = req;
+    const { uid, name, rol } = req;
 
     try{
 
-        const token = await generateJWT( uid, name );
+        const token = await generateJWT( uid, name,  rol );
 
         res.json({
             ok:true,
             token,
             uid,
+            rol,
             name
         })
 
