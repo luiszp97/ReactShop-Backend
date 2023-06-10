@@ -114,10 +114,33 @@ const userLogin = async (req, res = response)=> {
 
 };
 
+const tokenRenew = async (req, res = response )=> {
+
+    const { uid, name } = req;
+
+    try{
+
+        const token = await generateJWT( uid, name );
+
+        res.json({
+            ok:true,
+            token,
+            uid,
+            name
+        })
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+};
+
 
 
 module.exports = {
     createUser,
-    userLogin
+    userLogin,
+    tokenRenew
     
 }
