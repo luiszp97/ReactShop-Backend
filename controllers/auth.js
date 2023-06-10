@@ -92,31 +92,33 @@ const userLogin = async (req, res = response)=> {
 
     //? Genarando el jsonWebToken
 
-        const token = await generateJWT( usuario.id, usuario.name, usuario.rol );
+    const token = await generateJWT( usuario.id, usuario.name, usuario.rol );
 
-    res.json({
-        ok:true,
-        uid: usuario.id,
-        name: usuario.name,
-        rol: usuario.rol,
-        token
-    });
+        res.json({
+            ok:true,
+            uid: usuario.id,
+            name: usuario.name,
+            rol: usuario.rol,
+            token
+        });
 
-    } catch (error) {
-        
-        console.log(error)
-        res.status(500).json({
-            ok: false,
-            msg: 'Comunicate con el admin'
-        })
+        } catch (error) {
+            
+            console.log(error)
+            res.status(500).json({
+                ok: false,
+                msg: 'Comunicate con el admin'
+            })
 
-    }
+        }
 
 };
 
 const tokenRenew = async (req, res = response )=> {
 
     const { uid, name, rol } = req;
+
+    console.log(req)
 
     try{
 
