@@ -22,9 +22,9 @@ router.use( validateJwt );
 
 router.get('/', getAllProducts );
 
-router.get('/by-category&:query', getProdutByCategory );
-router.get('/by-price&:query', getProdutByPrice );
-router.get('/by-title&:query', getProductsByName );
+router.get('/&:query', getProdutByCategory );
+router.get('/&:query', getProdutByPrice );
+router.get('/&:query', getProductsByName );
 
 //? CRUD
 
