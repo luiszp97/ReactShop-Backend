@@ -249,7 +249,7 @@ const deleteProduct = async ( req, res = response ) => {
 
             return  res.status(401).json({
                 ok: false,
-                msg: 'No privilegios para eliminar este evento' 
+                msg: 'No privilegios para eliminar este producto' 
              })
 
         };
@@ -259,7 +259,7 @@ const deleteProduct = async ( req, res = response ) => {
         
         res.status(200).json({
             ok:true,
-            event: deletedProduct
+            product: deletedProduct
         })
     
 

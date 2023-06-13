@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const ProductSchema = Schema({
+const ShoppingCardSchema = Schema({
 
     title:{
         type: String,
@@ -36,7 +36,7 @@ const ProductSchema = Schema({
 
 });
 
-ProductSchema.method('toJSON', function() {
+ShoppingCardSchema.method('toJSON', function() {
 
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
@@ -44,4 +44,4 @@ ProductSchema.method('toJSON', function() {
     
  })
 
-module.exports = model('Product', ProductSchema);
+module.exports = model('ShoppingCard', ShoppingCardSchema);
