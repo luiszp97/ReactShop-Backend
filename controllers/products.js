@@ -136,6 +136,38 @@ const getProductsByName = async ( req , res = response ) => {
    
 };
 
+const getById = async ( req, res = response ) => {
+
+    try {
+        const product = await Product.findById( req.params.id );
+
+        if( product.length !== 0 ) {
+
+            return res.status(201).json({
+                ok:true,
+                product
+            })
+        } else {
+
+            return res.status(404).json({
+                ok: false,
+                msg: 'No hay productos en la base de datos'
+            })
+
+        }
+
+    } catch (error) {
+        
+        res.status(500).json({
+            ok: false,
+            msg: 'Comunicate con el adminstrador'
+        })
+
+    }
+        
+    
+}
+
 
 //? CRUD METHODS
 
@@ -285,6 +317,7 @@ module.exports = {
     getProdutByCategory,
     getProdutByPrice,
     getProductsByName,
+    getById,
 
     //? CRUD METHODS
     createNewProduct,

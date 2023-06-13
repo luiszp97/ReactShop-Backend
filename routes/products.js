@@ -6,7 +6,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator')
 
-const { getAllProducts, createNewProduct, getProdutByCategory, getProdutByPrice, getProductsByName, updateProduct, deleteProduct } = require('../controllers/products');
+const { getAllProducts, createNewProduct, getProdutByCategory, getProdutByPrice, getProductsByName, updateProduct, deleteProduct, getById } = require('../controllers/products');
 
 const { validateJwt } = require('../middlewares/validateJwt');
 const { fieldValidate } =  require('../middlewares/fields-validate');
@@ -25,6 +25,7 @@ router.get('/', getAllProducts );
 router.get('/by-category&:query', getProdutByCategory );
 router.get('/by-price&:query', getProdutByPrice );
 router.get('/by-title&:query', getProductsByName );
+router.get('/by-id&:id', getById );
 
 //? CRUD
 
