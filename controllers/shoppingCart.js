@@ -38,12 +38,12 @@ const getUserCart = async ( req, res = response ) => {
 
 const addProductInCart = async ( req, res = response ) => {
 
-    const product = new ShoppingCart ( req.body );
+    const product = new ShoppingCart ( req.body, { id: false } );
+    product._id = req.body.id
 
     try {
 
         product.user = req.uid;
-        product.id = req.id
 
         const savedProduct = await product.save();
         
