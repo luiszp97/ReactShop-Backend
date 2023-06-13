@@ -43,6 +43,7 @@ const addProductInCart = async ( req, res = response ) => {
     try {
 
         product.user = req.uid;
+        product.id = req.id
 
         const savedProduct = await product.save();
         
