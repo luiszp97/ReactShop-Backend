@@ -175,9 +175,11 @@ const createNewProduct = async ( req, res = response ) => {
 
     const product = new Product ( req.body );
 
+
     try {
 
         product.user = req.uid;
+        product.title = req.body.title.toLowerCase()
 
         const savedProduct = await product.save();
         
